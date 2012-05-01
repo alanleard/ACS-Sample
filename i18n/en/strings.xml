@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 	<string name="events">Events</string>	
-	<string name="settings">Settings</string>
 	<string name="artists">Artists</string>
 	<string name="venues">Venues</string>
 	<string name="profile">Profile</string>
