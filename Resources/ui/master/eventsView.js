@@ -5,14 +5,12 @@ exports.win = function(){
 	
 	var animate = require('modules/animation');
 	
-	var addBtn = Ti.UI.createButton({
-		title:'Add'
-	});
+	
 	
 	var win = Ti.UI.createWindow({
 		title:L('local')+' '+L('events'),
-		backgroundColor:'white',
-		rightNavButton:addBtn
+		backgroundColor:'white'
+		
 	});
 	
 	var mainView = Ti.UI.createView({height:'fill', width:'fill'});
@@ -23,13 +21,14 @@ exports.win = function(){
 	
 	win.add(mainView);
 	
-	addBtn.addEventListener('click', function(){
+	var add = function(){
 		
 			var cancelBtn = Ti.UI.createButton({
 				title:'Cancel'
 			});
-			win.setRightNavButton(cancelBtn);
-			
+			if(Ti.Platform.osname != 'android'){	
+				win.setRightNavButton(cancelBtn);
+			}
 			var form = formView.create('events', function(e){
 			
 			if(e.status == 'success'){
@@ -54,11 +53,37 @@ exports.win = function(){
 				animate.fadeOut(form, 1000);
 				mainView.remove(form);
 				form = null;
-				win.setRightNavButton(addBtn);
+				if(Ti.Platform.osname != 'android'){	
+					win.setRightNavButton(addBtn);
+				}
 			})
-			
+	}	
+	
+	if(Ti.Platform.osname == 'android'){				
+		var winMenu = win.activity; 
+			winMenu.onCreateOptionsMenu = function(x) {
+		   
+		    var menu = x.menu;
+		   
+		    var addBtn = menu.add({ title: "Add" });
+		    
+		    addBtn.setIcon("appicon.png");
+		    
+		    addBtn.addEventListener("click", add)
+					
+		}
+	} else {
+		var addBtn = Ti.UI.createButton({
+			title:'Add'
+		});
+		win.setRightNavButton(addBtn)
+		addBtn.addEventListener('click', add);	
+	}
+	
+	
+	
 		
-	});
+	
 	
 	return win;
 }
