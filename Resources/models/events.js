@@ -50,8 +50,8 @@ exports.create = function(data,callback){
     
     Cloud.Events.create({
     	name : data[0].value,
-		start_time : data[2].value,
-		duration : data[3].seconds,
+		start_time : data[2].value.toLocaleString(),
+		duration : ((data[3].value.getTime()-data[2].value.getTime())/1000),
 		place_id:data[4].id,
 		custom_fields:{artist:data[5].id, website:data[6].value,desciption:data[1].value, facebook:data[7].value}
     }, function(e) {
