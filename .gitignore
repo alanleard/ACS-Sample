@@ -1,3 +1,5 @@
 tmp
 build
 .DS_Store
+build.log
+.gitignore
