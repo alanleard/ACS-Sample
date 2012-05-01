@@ -4,14 +4,19 @@ function ApplicationTabGroup(Window) {
 	
 	//create app tabs
 	//var Window = require('ui/common/ApplicationWindow')
-	var artists = require('ui/master/artistsView');
-	var events = require('ui/master/eventsView');
-	var venues = require('ui/master/venuesView');
-	var profile = require('ui/master/profileView');
-	var win1 = events.win(),
-		win2 = artists.win(),
-		win3 = venues.win(),
-		win4 = profile.win();
+	// var artists = require('ui/master/artistsView');
+	// var events = require('ui/master/eventsView');
+	// var venues = require('ui/master/venuesView');
+	//var profile = require('ui/master/profileView');
+	var win = require('ui/common/ApplicationWindow');
+	// var win1 = events.win(),
+		// win2 = artists.win(),
+		// win3 = venues.win(),
+		// win4 = profile.win();
+	var win1 = win('events'),
+		win2 = win('artists'),
+		win3 = win('venues'),
+		win4 = win('profile');
 	
 	var tab1 = Ti.UI.createTab({
 		title: L('events'),
