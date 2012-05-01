@@ -9,10 +9,10 @@
     </deployment-targets>
     <sdk-version>2.0.1.GA2</sdk-version>
     <id>com.livelocal.app</id>
-    <name>LiveLocal</name>
+    <name>Live Local</name>
     <version>1.0</version>
     <publisher>alanleard</publisher>
-    <url>http://livelocal.com</url>
+    <url>http://livelocalapp.com</url>
     <description>not specified</description>
     <copyright>2012 by alanleard</copyright>
     <icon>appicon.png</icon>
